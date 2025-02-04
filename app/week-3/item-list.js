@@ -1,6 +1,6 @@
 'use client';
 
-import Item from './item'; // Assuming you have an Item component to display each item
+import Item from './item'; 
 
 export default function ItemList() {
   const items = [
