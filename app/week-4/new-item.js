@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 
-export default function NewItem() {
+const NewItem = () => {
   const [quantity, setQuantity] = useState(1);
 
   const increment = () => {
@@ -13,34 +13,26 @@ export default function NewItem() {
   };
 
   return (
-    <div className="bg-black min-h-screen flex justify-center items-center">
-      <div className="flex items-center gap-4 bg-white p-4 rounded-lg">
-        {/* Decrement Button */}
+    <div className="flex flex-col items-center justify-center h-screen bg-black text-white">
+      <div className="bg-white p-4 rounded shadow-md text-black flex items-center space-x-4">
         <button
           onClick={decrement}
           disabled={quantity === 1}
-          className={`px-4 py-2 rounded-md text-white ${
-            quantity === 1 ? "bg-gray-400 cursor-not-allowed" : "bg-gray-600 hover:bg-gray-500"
-          }`}
+          className={`px-4 py-2 rounded bg-gray-500 text-white ${quantity === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
         >
           -
         </button>
-
-        {/* Quantity Display */}
-        <span className="text-black text-2xl font-semibold">{quantity}</span>
-
-        {/* Increment Button */}
+        <span className="text-xl">{quantity}</span>
         <button
           onClick={increment}
           disabled={quantity === 20}
-          className={`px-4 py-2 rounded-md text-white ${
-            quantity === 20 ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-500"
-          }`}
+          className={`px-4 py-2 rounded bg-blue-500 text-white ${quantity === 20 ? "opacity-50 cursor-not-allowed" : ""}`}
         >
           +
         </button>
       </div>
     </div>
   );
-}
+};
 
+export default NewItem;
