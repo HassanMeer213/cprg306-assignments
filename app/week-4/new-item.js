@@ -1,38 +1,43 @@
 "use client";
-import { useState } from "react";
 
-const NewItem = () => {
-  const [quantity, setQuantity] = useState(1);
+import { useState} from "react";
 
-  const increment = () => {
-    if (quantity < 20) setQuantity(quantity + 1);
-  };
+export default function NewItem() {
+    const [quantity, setQuantity] = useState(1)
 
-  const decrement = () => {
-    if (quantity > 1) setQuantity(quantity - 1);
-  };
+    //IncreamenT
+    const increment = () => {
+        if (quantity < 20) {
+            setQuantity(quantity + 1);
+        }
+    }
 
-  return (
-    <div className="flex flex-col items-center justify-center h-screen bg-black text-white">
-      <div className="bg-white p-4 rounded shadow-md text-black flex items-center space-x-4">
-        <button
-          onClick={decrement}
-          disabled={quantity === 1}
-          className={`px-4 py-2 rounded bg-gray-500 text-white ${quantity === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
-        >
-          -
-        </button>
-        <span className="text-xl">{quantity}</span>
-        <button
-          onClick={increment}
-          disabled={quantity === 20}
-          className={`px-4 py-2 rounded bg-blue-500 text-white ${quantity === 20 ? "opacity-50 cursor-not-allowed" : ""}`}
-        >
-          +
-        </button>
-      </div>
-    </div>
-  );
-};
+    //Decrement
+    const decrement = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    }
 
-export default NewItem;
+    return (
+        <main className="flex justify-center w-full">
+            <div className="flex justify-between p-3 m-4 bg-white text-black w-36">
+                <h1 className="w-10 bg-slate-300 align-middle">{quantity}</h1>
+                <button 
+                    onClick={decrement}
+                    className={`w-10 bg-blue-400 hover:bg-blue-600 ${quantity <= 1 ? 'opacity-50 cursor-not-allowed' : 'hover:font-bold active:bg-blue-200'}`}
+                    disabled={quantity <= 1}
+                >
+                    -
+                </button>
+                <button 
+                    onClick={increment}
+                    className={`w-10 bg-blue-400 hover:bg-blue-500 ${quantity >= 20 ? 'opacity-50 cursor-not-allowed' : 'hover:font-bold active:bg-blue-200'}`}
+                    disabled={quantity >= 20}
+                >
+                    +
+                </button>
+            </div>
+        </main>
+    )
+}
