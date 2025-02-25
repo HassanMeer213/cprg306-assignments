@@ -5,7 +5,7 @@ import { useState} from "react";
 export default function NewItem() {
     const [quantity, setQuantity] = useState(1)
 
-    //IncreamenT
+    //Increament
     const increment = () => {
         if (quantity < 20) {
             setQuantity(quantity + 1);
